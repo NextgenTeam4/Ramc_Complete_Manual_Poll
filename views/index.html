@@ -36,6 +36,10 @@
                     name: user,
                     ans : rate_value
                 });
+                document.getElementById("r1").disabled = true;
+                document.getElementById("r2").disabled = true;
+
+
                 alert("Your POLL is YES");
             }
             function func1(){
@@ -46,6 +50,8 @@
                     name: user,
                     ans : rate_value
                 });
+                document.getElementById("r1").disabled = true;
+                document.getElementById("r2").disabled = true;
                 alert("Your POLL is NO")
             }
             function getData(){
@@ -312,19 +318,19 @@ padding:10px;}
 							    <center><div id="timer">
 									00:00		
 									</div></center>
-									<input type="text" name="username" id="user" placeholder="enter name" class="form-control">
+									<input type="text" name="username" id="user" placeholder="enter name" class="form-control" required>
 											<br>
-								    <div class="btn-group" role="group" aria-label="Basic example">
+								    <div class="btn-group pollbtn" role="group" aria-label="Basic example">
 									  <button type="submit" class="btn btn-success" id="r1"name="poll"value="YES" onclick="func()">YES</button>
 									  <button type="submit" class="btn btn-success" id="r2" name="poll"value="NO" style="border-left: 2px solid" onclick="func1()">NO</button>
-									  <button class="btn btn-danger viewchart"  onclick="getData()" style="border-left: 2px solid">View Chart</button>
+									  <button class="btn btn-danger"  onclick="getData()" style="border-left: 2px solid">View Chart</button>
 									</div>
-									<center>
-								   <div id="canvas-holder" style="width: 50%">
+							  </div>
+							  <center>
+								   <div id="canvas-holder" style="width: 40%">
 	            						<canvas id="chart-area"></canvas>
 	        						</div>
 	        					</center>
-							  </div>
 							</div>
 						<button class="btn btn-warning" id="myBtn">Answer Poll</button>
 					</div>
@@ -433,6 +439,7 @@ padding:10px;}
 
 	$(function() {
 		$('.time').on('click', function(e) {
+			$(".time").attr("disabled", true);
 			e.stopPropagation();
 			var time = $(this).text() * 60 * 1000;
 			timer.setEndTime(time);
@@ -457,7 +464,7 @@ padding:10px;}
         $(".chatdiv").hide();
         $("#info").hide();
         $("#myDIV").hide();
-        $("#canvas-holder").hide();
+        // $("#canvas-holder").hide();
         $(".infobtn").click(function(){
             $("#info").slideToggle();
         });
@@ -467,9 +474,9 @@ padding:10px;}
         $(".chatbtn").click(function(){
             $(".chatdiv").slideToggle();
         });
-        $(".viewchart").click(function(){
-            $("#canvas-holder").slideToggle();
-        });
+        // $(".viewchart").click(function(){
+        //     $("#canvas-holder").slideToggle();
+        // });
     });
 
 		//Answering the poll
